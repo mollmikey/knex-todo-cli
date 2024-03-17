@@ -3,10 +3,15 @@ import * as commands from './commands.js'
 
 const userInputs = process.argv
 const cmd = userInputs[2]
+const newTodo = userInputs[3]
 
 switch (cmd) {
   case 'list':
     await commands.list()
+    break
+
+  case 'add':
+    await commands.add(newTodo)
     break
 
   default:
