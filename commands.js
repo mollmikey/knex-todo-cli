@@ -1,4 +1,4 @@
-import { getTodos, close, addTodo } from './db.js'
+import { getTodos, close, addTodo, updateTodo } from './db.js'
 
 export async function list() {
   try {
@@ -14,6 +14,19 @@ export async function list() {
 export async function add(data) {
   try {
     await addTodo(data)
+    const todos = await getTodos()
+    printTodos(todos)
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
+
+export async function update(id, data) {
+  try {
+    // console.log(id, data)
+    await updateTodo(id, data)
     const todos = await getTodos()
     printTodos(todos)
   } catch (err) {

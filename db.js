@@ -13,12 +13,17 @@ export async function deleteTodo(id) {
 }
 
 export async function addTodo(data) {
-  console.log(data)
+  // console.log(data)
   return await db('todos').insert({ task: data })
+}
+
+export async function updateTodo(id, data) {
+  console.log(id, data)
+  return await db('todos').update({ task: data }).where('id', id)
 }
 
 export function close() {
   db.destroy()
 }
 
-// console.log(await addTodo({ task: 'Greet poeple' }))
+// console.log(await updateTodo(4, { task: 'Eat lunch' }))
