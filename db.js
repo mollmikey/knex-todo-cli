@@ -8,6 +8,12 @@ export function getTodos() {
 }
 
 // Your DB functions go here
+async function deleteTodo(id) {
+  return await db('todos').del().where('id', id)
+}
+
 export function close() {
   db.destroy()
 }
+
+console.log(await deleteTodo(1))
