@@ -1,7 +1,4 @@
-import knexfile from './knexfile.js'
-import knex from 'knex'
-
-const db = knex(knexfile.development)
+import db from './connection.js'
 
 export function getTodos() {
   return db('todos').select()
@@ -22,7 +19,7 @@ export async function updateTodo(id, data) {
 }
 
 export async function searchTodo(data) {
-  return await db('todos').select().where('task', '=', data)
+  return await db('todos').select('task').where('task', 'LIKE', `%${data}%`)
 }
 
 export async function completeTodo(id) {
