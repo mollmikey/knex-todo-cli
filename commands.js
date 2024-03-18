@@ -1,4 +1,4 @@
-import { getTodos, close, addTodo, updateTodo } from './db.js'
+import { getTodos, close, addTodo, updateTodo, searchTodo } from './db.js'
 
 export async function list() {
   try {
@@ -29,6 +29,22 @@ export async function update(id, data) {
     await updateTodo(id, data)
     const todos = await getTodos()
     printTodos(todos)
+  } catch (err) {
+    logError(err)
+  } finally {
+    close()
+  }
+}
+
+export async function search(data) {
+  try {
+    const todos = await searchTodo(data)
+    console.log(todos)
+    // if (todos == []) {
+    //   console.log('Not found.')
+    // } else {
+    //   console.log(todos)
+    // }
   } catch (err) {
     logError(err)
   } finally {

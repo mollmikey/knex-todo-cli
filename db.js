@@ -18,12 +18,15 @@ export async function addTodo(data) {
 }
 
 export async function updateTodo(id, data) {
-  console.log(id, data)
   return await db('todos').update({ task: data }).where('id', id)
+}
+
+export async function searchTodo(data) {
+  return await db('todos').select().where('task', '=', data)
 }
 
 export function close() {
   db.destroy()
 }
 
-// console.log(await updateTodo(4, { task: 'Eat lunch' }))
+//console.log(await searchTodo('Eat'))
