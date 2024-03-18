@@ -6,8 +6,8 @@ export async function seed(knex) {
   // Deletes ALL existing entries
   await knex('todos').del()
   await knex('todos').insert([
-    { task: 'Greet poeple' },
-    { task: 'Smile' },
-    { task: 'Breathe (it is very important)' },
+    { task: 'Greet poeple', complete: false },
+    { task: 'Smile', complete: false },
+    { task: 'Breathe (it is very important)', complete: false },
   ])
 }

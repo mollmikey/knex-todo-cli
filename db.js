@@ -25,6 +25,10 @@ export async function searchTodo(data) {
   return await db('todos').select().where('task', '=', data)
 }
 
+export async function completeTodo(id) {
+  return await db('todos').update({ complete: true }).where('id', id)
+}
+
 export function close() {
   db.destroy()
 }

@@ -23,6 +23,10 @@ switch (cmd) {
     await commands.search(input3)
     break
 
+  case 'complete':
+    await commands.complete(input3)
+    break
+
   default:
     console.log(`I don't understand that command: ${cmd}`)
 }
